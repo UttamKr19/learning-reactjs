@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Forms from './Forms';
 
 
 // class based component equivalent of function based component HELLO 
@@ -12,19 +13,19 @@ import './index.css';
 
 
 // Function based component
-function Hello(props){
+function Hello(props) {
   return <div>
-           <h1>Hello,  {props.toWhat} </h1>
-        </div>
+    <h1>Hello,  {props.toWhat} </h1>
+  </div>
 }
 
 
 // Class based component
-class Main extends React.Component{
-  render(){
+class Main extends React.Component {
+  render() {
     return <div>
-      bello <hr/>
-      <Hello toWhat="world "/>
+      bello <hr />
+      <Hello toWhat="world " />
     </div>;
   }
 }
@@ -33,18 +34,18 @@ class Main extends React.Component{
 class Clock extends React.Component {
   constructor(props) {
     super(props); //always called in top of class based component constructor
-    this.val=0;
+    this.val = 0;
 
     //initializing state with some values
-    this.state = { 
-                    date: new Date(),
-                    val:0
-                };
+    this.state = {
+      date: new Date(),
+      val: 0
+    };
   }
 
 
   // called every time there is any update in component (i.e, the state here)
-  componentDidUpdate(){
+  componentDidUpdate() {
     //console.log('did update',this.state.val);
   }
 
@@ -67,13 +68,13 @@ class Clock extends React.Component {
 
   tick() {
     console.log('tick() called')
-    
+
     //updating state of component using setState() method
     //if we set the same values {date:this.state.date, val:this.state.val} then componentDidUpdate will not be called
     //also simply using this.state.date=new value will not re-render, we have to use setState() to update the UI  
     this.setState({
       date: new Date(),
-      val:this.state.val+1
+      val: this.state.val + 1
     });
 
     // // for asynchronous behaviour in code, it's better to pass fxn in the setState() args instead of this.state
@@ -81,10 +82,10 @@ class Clock extends React.Component {
     // this.setState((state, props) => ({
     //   counter: state.counter + props.increment
     // }));
-    
+
   }
 
-// render method returning JSX - JavaScript Syntax Extension
+  // render method returning JSX - JavaScript Syntax Extension
   render() {
     return (
       <div>
@@ -100,7 +101,7 @@ class Toggle extends React.Component {
   //constructor and super can also be called without args
   constructor(props) {
     super(props);
-    this.state = {isToggleOn: true};
+    this.state = { isToggleOn: true };
 
     // This binding is necessary to make `this` work in the callback
     //binding handleClick variable with handleClick()
@@ -115,9 +116,9 @@ class Toggle extends React.Component {
   }
 
   render() {
-    
+
     return (
-      <button className="btn btn-primary btn-block" onClick={this.handleClick}> 
+      <button className="btn btn-primary btn-block" onClick={this.handleClick}>
         {this.state.isToggleOn ? 'ON' : 'OFF'}
       </button>
     );
@@ -162,15 +163,15 @@ class LoginControl extends React.Component {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.state = {isLoggedIn: false};
+    this.state = { isLoggedIn: false };
   }
 
   handleLoginClick() {
-    this.setState({isLoggedIn: true});
+    this.setState({ isLoggedIn: true });
   }
 
   handleLogoutClick() {
-    this.setState({isLoggedIn: false});
+    this.setState({ isLoggedIn: false });
   }
 
   render() {
@@ -189,7 +190,7 @@ class LoginControl extends React.Component {
     //     : <LoginButton onClick={this.handleLoginClick} />
     //   }
     // </div>
-    
+
 
     // return null to hide component, it will only hide it but won't unmount it
     return (
@@ -225,38 +226,6 @@ function NumberList(props) {
 
 const numbers = [1, 2, 3, 4, 5];
 
-
-//forms
-class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-}
 
 
 class Reservation extends React.Component {
@@ -305,16 +274,33 @@ class Reservation extends React.Component {
   }
 }
 
+//hooks
+function Abc(props) {
+
+  let [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <button className="btn btn-block btn-info" onClick={() => { setCount(count + 1) }}>Count</button>
+      <p className="text-center">{count}</p>
+    </div>
+  );
+}
+
+
 // first argument- JSX element that is to be rendered, second argument- where to render
 ReactDOM.render(
   <>
-  <Main/>
-  {/* <Clock/> */}
-  <Toggle/>
-  <LoginControl/>
-  {/* <NumberList numbers={numbers}/> */}
-  {/* <NameForm/> */}
-  {/* <Reservation/> */}
+    {/* <Main /> */}
+    <LoginControl />
+
+    {/* <Clock/> */}
+    {/* <Toggle/> */}
+    {/* <NumberList numbers={numbers}/> */}
+    {/* <NameForm/> */}
+    {/* <Reservation/> */}
+    {/* <Abc /> */}
+    <Forms/>
 
   </>,
   document.getElementById('root')
