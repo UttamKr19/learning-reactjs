@@ -313,8 +313,9 @@ ReactDOM.render(
   <Toggle/>
   <LoginControl/>
   {/* <NumberList numbers={numbers}/> */}
-  <NameForm/>
-  <Reservation/>
+  {/* <NameForm/> */}
+  {/* <Reservation/> */}
+
   </>,
   document.getElementById('root')
 );

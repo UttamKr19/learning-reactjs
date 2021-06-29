@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 function App() {
   return (
     <div className="App">
-      
+      This is app
     </div>
   );
 }
@@ -20,7 +20,5 @@ function App() {
 
 
 
-
-
-
 export default App;
+
