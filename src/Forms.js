@@ -4,9 +4,9 @@ export default class Forms extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-                        name:'',
+                        email:'',
                         password:'' ,
-                        nameError:'',
+                        emailError:'',
                         passwordError:''
                     };
 
@@ -14,9 +14,9 @@ export default class Forms extends React.Component {
     }
 
     valid(){
-        if(!this.state.name.includes('@')){
+        if(!this.state.email.includes('@')){
             this.setState({
-                            nameError:'Invalid name'
+                            emailError:'Invalid email'
                         });
             return false;
         }
@@ -34,7 +34,7 @@ export default class Forms extends React.Component {
         event.preventDefault();
         
         this.setState({
-            nameError:'',
+            emailError:'',
             passwordError:''
         });
 
@@ -43,17 +43,29 @@ export default class Forms extends React.Component {
             console.log(this.state);
         }
         else{
-            console.log('Validation problem',this.state.nameError,this.state.passwordError);
+            console.log('Validation problem',this.state.emailError,this.state.passwordError);
         }
     }
 
+    // handleOnChange(event){
+    //     const name = target.name;
+    //     this.setState({
+    //         [name]:event.target.value
+    //     });
+    // }
+
     render() {
+        const formStyle={
+            fontSize:"20px",
+            textAlign:"center",
+            margin:"20px"
+        }
         return (
-            <form  onSubmit={this.handleSubmit}>
+            <form style={formStyle} onSubmit={this.handleSubmit}>
                 <label>
-                    Name:
-                    <input type="text" onChange={(event)=>{this.setState({name:event.target.value})}} />
-                    <p className="formError">{this.state.nameError}</p>
+                    Email:
+                    <input type="text" onChange={(event)=>{this.setState({email:event.target.value})}} />
+                    <p className="formError">{this.state.emailError}</p>
                 </label>
                 <br/>
                 <label>
