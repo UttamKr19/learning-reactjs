@@ -8,6 +8,7 @@ export default function Hooks(props) {
   
     return (
       <div>
+        <h1> Hooks in React</h1>
         <button className="btn btn-block btn-info" onClick={() => { setCount(count + 1) }}>Count</button>
         <p className="text-center">{count}</p>
       </div>

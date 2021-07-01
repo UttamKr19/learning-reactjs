@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'react-bootstrap'
 //forms
 export default class Forms extends React.Component {
     constructor(props) {
@@ -61,21 +62,24 @@ export default class Forms extends React.Component {
             margin:"20px"
         }
         return (
-            <form style={formStyle} onSubmit={this.handleSubmit}>
-                <label>
-                    Email:
-                    <input type="text" onChange={(event)=>{this.setState({email:event.target.value})}} />
-                    <p className="formError">{this.state.emailError}</p>
-                </label>
-                <br/>
-                <label>
-                    Password:
-                    <input type="password" onChange={(event)=>{this.setState({password:event.target.value})}} />
-                    <p className="formError">{this.state.passwordError}</p>
-                </label>
-                <br/>
-                <button className="btn btn-block btn-info" type="submit">Submit</button>
-            </form>
+            <div>
+                <h1> Forms in React</h1>
+                <form  className="form-group text-center"  onSubmit={this.handleSubmit}>
+                    <label>
+                        Email:
+                        <input className="form-control" type="text" onChange={(event)=>{this.setState({email:event.target.value})}} />
+                        <p className="formError">{this.state.emailError}</p>
+                    </label>
+                    <br/>
+                    <label>
+                        Password:
+                        <input className="form-control" type="password" onChange={(event)=>{this.setState({password:event.target.value})}} />
+                        <p className="formError">{this.state.passwordError}</p>
+                    </label>
+                    <br/>
+                    <Button  className="btn-block" type="submit">Submit</Button>
+                </form>
+            </div>
         );
     }
 }

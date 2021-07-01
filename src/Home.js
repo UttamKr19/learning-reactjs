@@ -4,7 +4,7 @@ export default function Home(props) {
 
     return (
       <div>
-        This is HOME
+        <h1>Sample Home page</h1>
       </div>
     );
   }
