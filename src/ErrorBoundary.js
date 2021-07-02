@@ -12,23 +12,31 @@ export default class ErrorBoundary extends React.Component{
         return {error:true}
     }
 
-    handleOnClick(e){
+    componentDidCatch(){
+        
+    }
+
+    handleOnClick=(e)=>{
         this.setState({
             error:!this.state.error
         })
         
     }
 
+    generateError=()=>{
+        console.log('error generated');
+        throw new Error('custom error ABCD');
+    }
+    
     render(){
         
         return(
             
             <div>
                 <h1>Error Boundary</h1>
-                <button className="btn btn-block btn-danger" onClick={this.handleOnClick.bind(this)}> Create Error </button>
-
+                <button className="btn-block btn-danger" onClick={this.handleOnClick}> Create Error </button>
                 {
-                    this.state.error?  new Error("Custorm eror")   : <div> fine </div>
+                    this.state.error? this.generateError() : <div> Click button to generate error </div>
                 }
             </div>
         )

@@ -19,7 +19,7 @@ function Greeting(props) {
 
 function LoginButton(props) {
     return (
-        <button className="btn btn-block btn-success" onClick={props.onClick}>
+        <button className="btn-block btn-success" onClick={props.onClick}>
             Login
         </button>
     );
@@ -27,7 +27,7 @@ function LoginButton(props) {
 
 function LogoutButton(props) {
     return (
-        <button className="btn btn-block btn-danger" onClick={props.onClick}>
+        <button className="btn-block btn-danger" onClick={props.onClick}>
             Logout
         </button>
     );

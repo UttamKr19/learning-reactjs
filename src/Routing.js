@@ -5,11 +5,13 @@ import Forms from './Forms';
 import LoginControl from './ConditionalRendering';
 import Api from './Api';
 import ReactModal from './ReactModal';
-import User from './User'
 import ErrorBoundary from './ErrorBoundary';
+import Fragment from './Fragment';
 import './routing.css';
 import {Button} from 'react-bootstrap'
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
+import RefsDemo from './RefsDemo';
+import Portal from './Portal';
 
 
 
@@ -35,8 +37,12 @@ export default class Routing extends React.Component{
                         <li> <Link to="/hooks">Hooks</Link> </li>
                         <li> <Link to="/login">Conditional</Link> </li>
                         <li> <Link to="/api">API</Link> </li>
-                        <li> <Link to="/modal">Modal</Link> </li>
+                        {/* <li> <Link to="/modal">Modal</Link> </li> */}
                         <li> <Link to="/error">ErrorBoundary</Link> </li>
+                        <li> <Link to="/fragment">Fragments</Link> </li>
+                        <li> <Link to="/refs">Refs</Link> </li>
+                        {/* <li> <Link to="/portal">Portal</Link> </li> */}
+                        
                         
 
                         <li className="themeButton"> <Button>Light</Button></li>
@@ -49,6 +55,9 @@ export default class Routing extends React.Component{
                     <Route path="/api" component={Api}/>
                     <Route path="/modal" component={ReactModal}/>
                     <Route path="/error" component={ErrorBoundary}/>
+                    <Route path="/fragment" component={Fragment}/>
+                    <Route path="/refs" component={RefsDemo}/>
+                    <Route path="/portal" component={Portal}/>
 
                 </Router>
             </div>

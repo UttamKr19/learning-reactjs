@@ -1,0 +1,10 @@
+for binding onClick methods
+    if binding method does not contain setState() then onClick={this.handleOnClick} works fine after binding in constructor
+    or onClick={this.handleOnClick.bind(this)} if not binded in constructor
+
+    but if the binded method contains setState() then do either onClick={this.handleOnClick()} (not recommended)
+    or onClick={()=>this.handleOnClick()}
+
+    reason- this keywords works differently in js
+
+
