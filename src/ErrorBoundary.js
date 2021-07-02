@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class ErrorBoundary extends React.Component{
-    constructor(){
+    constructor(props){
         super();
         this.state={
             error:false
@@ -12,33 +12,17 @@ export default class ErrorBoundary extends React.Component{
         return {error:true}
     }
 
-    componentDidCatch(){
-        
+    componentDidCatch(error,info){
+        console.log(error,info);
     }
 
-    handleOnClick=(e)=>{
-        this.setState({
-            error:!this.state.error
-        })
-        
-    }
-
-    generateError=()=>{
-        console.log('error generated');
-        throw new Error('custom error ABCD');
-    }
-    
     render(){
         
+        if(this.state.error){
+            return <>Something went wrong</>
+        }
         return(
-            
-            <div>
-                <h1>Error Boundary</h1>
-                <button className="btn-block btn-danger" onClick={this.handleOnClick}> Create Error </button>
-                {
-                    this.state.error? this.generateError() : <div> Click button to generate error </div>
-                }
-            </div>
+            this.props.children
         )
     }
 }
